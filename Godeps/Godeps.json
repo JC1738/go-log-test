@@ -19,7 +19,7 @@
 		},
 		{
 			"ImportPath": "github.com/rogierlommers/logrus-redis-hook",
-			"Rev": "ed8570e14b584cd1c87e1db9fe98b9d697a19805"
+			"Rev": "d9ba906a466c9faf324f8e20de2e3f8ae45c8c81"
 		},
 		{
 			"ImportPath": "golang.org/x/sys/unix",

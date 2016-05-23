@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"runtime"
 	"strings"
 	"time"
 
@@ -36,6 +37,7 @@ type LogstashMessageV0 struct {
 
 // LogstashMessageV1 represents v1 format
 type LogstashMessageV1 struct {
+	OtherType   string `json:"type,omitempty"`
 	Type        string `json:"@type,omitempty"`
 	Timestamp   string `json:"@timestamp"`
 	Sourcehost  string `json:"host"`
@@ -43,6 +45,7 @@ type LogstashMessageV1 struct {
 	Application string `json:"application"`
 	File        string `json:"file"`
 	Level       string `json:"level"`
+	Animal      string `json:"animal,omitempty"`
 }
 
 // NewHook creates a hook to be added to an instance of logger
@@ -128,6 +131,18 @@ func createV1Message(entry *logrus.Entry, appName string) LogstashMessageV1 {
 	m.Message = entry.Message
 	m.Level = entry.Level.String()
 	m.Application = appName
+	m.Type = appName
+	m.OtherType = appName
+
+	pc, fn, line, _ := runtime.Caller(5)
+	m.File = fmt.Sprintf("[%s:%s] %d", runtime.FuncForPC(pc).Name(), fn, line)
+
+	_, ok := entry.Data["animal"]
+
+	if ok {
+		m.Animal = entry.Data["animal"].(string)
+	}
+
 	return m
 }
 
