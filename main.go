@@ -3,6 +3,7 @@ package main
 import (
 	log "github.com/Sirupsen/logrus"
 	"github.com/rogierlommers/logrus-redis-hook"
+	"github.com/jc1738/lfshook"
 )
 
 func init() {
@@ -12,6 +13,15 @@ func init() {
 	} else {
 		log.Error(err)
 	}
+	
+    log.AddHook(lfshook.NewHook(lfshook.PathMap{
+        log.InfoLevel : "./info.log",
+		log.DebugLevel : "./debug.log",
+        log.ErrorLevel : "./error.log",
+		log.FatalLevel : "./fatal.log",
+		log.PanicLevel : "./panic.log",		
+    }))	
+		
 }
 
 func main() {

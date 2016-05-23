@@ -18,6 +18,11 @@
 			"Rev": "8873b2f1995f59d4bcdd2b0dc9858e2cb9bf0c13"
 		},
 		{
+			"ImportPath": "github.com/jc1738/lfshook",
+			"Comment": "v1.0-5-g13f264f",
+			"Rev": "13f264f74664f5541bb066d20e7e7267be0b250e"
+		},
+		{
 			"ImportPath": "github.com/rogierlommers/logrus-redis-hook",
 			"Rev": "d9ba906a466c9faf324f8e20de2e3f8ae45c8c81"
 		},

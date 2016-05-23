@@ -2,6 +2,7 @@ postman
 postman.exe
 *.swp
 *.swo
+*.log
 .DS_Store
 *~
 sample.json
